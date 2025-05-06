@@ -8,6 +8,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <style>
+	  @keyframes fall {
+	  0% {
+		transform: translateY(0) rotate(0deg);
+	  }
+	  100% {
+		transform: translateY(100vh) rotate(360deg);
+	  }
+	}
     :root {
       --primary: #ffffff; /* белый текст */
       --accent: #f8d7da; /* нежно-розовый для акцентов */
@@ -342,7 +350,7 @@
     <p class="subtitle animate__animated animate__fadeIn animate-delay-1">С любовью приглашаем вас на нашу свадьбу</p>
     
     <div class="date-box animate__animated animate__fadeIn animate-delay-1">
-      <p>20 июля 2025 года</p>
+      <p>25 июля 2025 года</p>
       <p>г. Новосибирск</p>
     </div>
 
@@ -369,8 +377,6 @@
     <div class="divider"></div>
 
     <div class="details animate__animated animate__fadeIn animate-delay-2">
-      <p><strong>Праздничный вечер:</strong></p>
-      <p><span class="highlight">25 мая 2025</span></p>
       <p>
         Ресторан 
         <a href="https://yandex.ru/maps/?text=Красный%20проспект%2042а%20Новосибирск" target="_blank" class="map-link">«Парадиз»</a>
@@ -385,46 +391,58 @@
     <p class="footer-note animate__animated animate__fadeIn animate-delay-2">С нетерпением ждём этого прекрасного дня!</p>
   </div>
 
-  <script>
-    // Обратный отсчет до даты свадьбы (20 июля 2025)
-    function updateCountdown() {
-      const weddingDate = new Date('July 20, 2025 00:00:00').getTime();
-      const now = new Date().getTime();
-      const distance = weddingDate - now;
-      
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      
-      document.getElementById('days').innerText = days.toString().padStart(2, '0');
-      document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
-      document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
-      document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+<script>
+  // Обратный отсчет до даты свадьбы
+  function updateCountdown() {
+    const weddingDate = new Date('July 25, 2025 00:00:00').getTime();
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById('days').innerText = days.toString().padStart(2, '0');
+    document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+  }
+
+  // Сразу обновить и затем запускать каждую секунду
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+ // Функция для генерации анимированных сердечек
+  function startHearts() {
+    const colors = ['#ff99aa', '#ffc0cb', '#ffccd5', '#ffb6c1'];
+    const count = 30;
+
+    for (let i = 0; i < count; i++) {
+      const heart = document.createElement('div');
+      heart.innerText = '♥';
+      heart.style.position = 'fixed';
+      heart.style.zIndex = 9999;
+      heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = '-2rem';
+      heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+      heart.style.opacity = Math.random() * 0.8 + 0.2;
+      heart.style.animation = `fall ${Math.random() * 3 + 4}s linear forwards`;
+
+      document.body.appendChild(heart);
+
+      // удаляем сердечко после анимации
+      setTimeout(() => heart.remove(), 8000);
     }
-    
-    // Обновляем счетчик каждую секунду
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-    
-    // Функция для эффекта конфетти
-    function celebrate() {
-      confetti({
-        particleCount: 150,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff']
-      });
-      
-    // Случайные "вспышки" конфетти при загрузке страницы
-    setTimeout(() => {
-      confetti({
-        particleCount: 30,
-        spread: 60,
-        origin: { y: 0.6 },
-        colors: ['#ffffff']
-      });
-    }, 1500);
-  </script>
+  }
+
+  // Запуск через 1 секунду после загрузки
+  window.addEventListener('load', () => {
+    setTimeout(startHearts, 1000);
+  });
+</script>
+</script>
+
 </body>
 </html>
