@@ -13,7 +13,7 @@
       color: white;
       text-align: center;
       min-height: 100vh;
-      background: url('https://i.pinimg.com/736x/61/df/4b/61df4b60c504478d66cdd45d8216c4ea.jpg') no-repeat center center/cover;
+      background: url('https://i.ibb.co/mC80wx0R/photo-2025-05-06-15-54-28.jpg') no-repeat center center/cover;
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -27,7 +27,7 @@
       padding: 2rem;
       animation: fadeInUp 1.5s ease;
       background-color: rgba(0, 0, 0, 0.6);
-      border-radius: 10px;
+      border-radius: 16px;
       width: 90%;
       max-width: 600px;
     }
@@ -38,9 +38,45 @@
       margin: 0.5rem 0;
     }
 
+    .subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+      font-weight: 300;
+    }
+
     p {
       font-size: 1.2rem;
-      margin: 0.5rem 0;
+      margin: 0.4rem 0;
+    }
+
+    .divider {
+      width: 80px;
+      height: 2px;
+      background: #fff;
+      margin: 1rem auto;
+      opacity: 0.6;
+    }
+
+    .details {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .highlight {
+      font-size: 1.1rem;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.3rem 0.8rem;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 0.3rem 0;
+    }
+
+    a.map-link {
+      color: #ffdcdc;
+      text-decoration: underline;
+      font-weight: bold;
     }
 
     @keyframes fadeInUp {
@@ -57,6 +93,7 @@
     @media (max-width: 600px) {
       h1 { font-size: 2.2rem; }
       p { font-size: 1rem; }
+      .details { font-size: 0.95rem; }
       body {
         background: url('https://i.pinimg.com/736x/61/df/4b/61df4b60c504478d66cdd45d8216c4ea.jpg') no-repeat center center/cover;
         background-attachment: scroll;
@@ -67,9 +104,24 @@
 <body>
   <div class="container">
     <h1>Данил & Ульяна</h1>
-    <p>С любовью приглашаем вас на день нашей свадьбы</p>
+    <p class="subtitle">С любовью приглашаем вас на день нашей свадьбы</p>
     <p>20 июля 2025 года</p>
-    <p>г. Санкт-Петербург</p>
+    <p>г. Новосибирск</p>
+
+    <div class="divider"></div>
+
+    <div class="details">
+      <p><strong>Праздничный вечер:</strong></p>
+      <p><span class="highlight">25 мая 2025</span></p>
+      <p>
+        Ресторан 
+        <a href="https://yandex.ru/maps/?text=Красный%20проспект%2042а%20Новосибирск" target="_blank" class="map-link">«Парадиз»</a>
+      </p>
+      <p>Красный проспект, 42а</p>
+      <p>Сбор гостей: <span class="highlight">16:00</span></p>
+      <p>Начало банкета: <span class="highlight">17:00</span></p>
+      <p>Окончание праздника: <span class="highlight">23:00</span></p>
+    </div>
   </div>
 </body>
 </html>
