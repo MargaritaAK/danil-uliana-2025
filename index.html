@@ -22,24 +22,24 @@
       box-sizing: border-box;
     }
 
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Playfair Display', serif;
-    color: var(--primary);
-    text-align: center;
-    min-height: 100vh;
-    background: url('https://i.ibb.co/mC80wx0R/photo-2025-05-06-15-54-28.jpg') no-repeat center center;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;
-    overflow-x: hidden;
-  }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Playfair Display', serif;
+      color: var(--primary);
+      text-align: center;
+      min-height: 100vh;
+      background: url('https://i.ibb.co/mC80wx0R/photo-2025-05-06-15-54-28.jpg') no-repeat center center/cover;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
 
     .container {
       padding: 3rem 2rem;
@@ -256,11 +256,18 @@
     .animate-delay-1 { animation-delay: 0.3s; }
     .animate-delay-2 { animation-delay: 0.6s; }
 
-  @media (max-width: 600px) {
-    body {
-      background-attachment: scroll; /* Отключение фиксированного фона для мобильных устройств */
-      background-position: center center; /* Установка центра фона */
-      background-size: cover; /* Увеличение размера фона на мобильных устройствах */
+    @media (max-width: 600px) {
+      body {
+        background-attachment: scroll; /* Убираем фиксированное положение фона для мобильных */
+        background-size: cover; /* Сохраняем размер cover для фона */
+        background-position: center center; /* Центрируем изображение */
+      }
+    }
+    
+    @media (max-width: 400px) {
+      body {
+        background-size: 150% auto; /* Увеличиваем фон для малых экранов */
+      }
     }
   }
   </style>
