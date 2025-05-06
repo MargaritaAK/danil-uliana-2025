@@ -410,37 +410,11 @@
   }
 
   // Сразу обновить и затем запускать каждую секунду
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-
- // Функция для генерации анимированных сердечек
-  function startHearts() {
-    const colors = ['#ff99aa', '#ffc0cb', '#ffccd5', '#ffb6c1'];
-    const count = 30;
-
-    for (let i = 0; i < count; i++) {
-      const heart = document.createElement('div');
-      heart.innerText = '♥';
-      heart.style.position = 'fixed';
-      heart.style.zIndex = 9999;
-      heart.style.color = colors[Math.floor(Math.random() * colors.length)];
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.top = '-2rem';
-      heart.style.fontSize = Math.random() * 20 + 20 + 'px';
-      heart.style.opacity = Math.random() * 0.8 + 0.2;
-      heart.style.animation = `fall ${Math.random() * 3 + 4}s linear forwards`;
-
-      document.body.appendChild(heart);
-
-      // удаляем сердечко после анимации
-      setTimeout(() => heart.remove(), 8000);
-    }
-  }
-
-  // Запуск через 1 секунду после загрузки
-  window.addEventListener('load', () => {
-    setTimeout(startHearts, 1000);
+  document.addEventListener("DOMContentLoaded", function() {
+    updateCountdown(); // Выполним обновление сразу после загрузки страницы
+    setInterval(updateCountdown, 1000); // Каждый 1 секунду обновляем отсчет
   });
+
 </script>
 </script>
 
