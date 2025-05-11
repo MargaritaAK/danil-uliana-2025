@@ -1,332 +1,87 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Данил & Ульяна — Свадьба 2025</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Приглашение на свадьбу</title>
   <style>
-    @keyframes fall {
-      0% { transform: translateY(0) rotate(0deg); }
-      100% { transform: translateY(100vh) rotate(360deg); }
-    }
-    :root {
-      --primary: #ffffff;
-      --accent: #f8d7da;
-      --text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Playfair Display', serif;
-      color: var(--primary);
-      text-align: center;
-      min-height: 100vh;
-      background: url('https://i.ibb.co/mC80wx0R/photo-2025-05-06-15-54-28.jpg') no-repeat center center/cover;
       background-size: cover;
+      background-repeat: no-repeat;
       background-position: center;
-      background-attachment: fixed;
+      font-family: 'Georgia', serif;
+      color: #3e2f2f;
+      height: 100vh; /* Для того, чтобы фон заполнил весь экран */
       display: flex;
-      align-items: center;
       justify-content: center;
-      flex-direction: column;
-      position: relative;
-      overflow-x: hidden;
+      align-items: center;
     }
 
     .container {
-      padding: 3rem 2rem;
-      animation: fadeInUp 1.5s ease;
-      background-color: rgba(0, 0, 0, 0.2);
-      border-radius: 16px;
-      width: 90%;
-      max-width: 650px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      position: relative;
-      overflow: hidden;
-      margin: 2rem 0;
-      backdrop-filter: blur(2px);
-    }
-
-    .container::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+      max-width: 600px;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      background-image: url('фон.jpg'); /* Фон для контейнера */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.9; /* Прозрачность фона для читаемости текста */
+      text-align: center;
     }
 
     h1 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 4rem;
-      margin: 0.5rem 0;
-      color: var(--primary);
-      text-shadow: var(--text-shadow);
-      position: relative;
-      display: inline-block;
+      font-family: 'Brush Script MT', cursive;
+      font-size: 36px;
+      margin-bottom: 0;
     }
 
-    .subtitle {
-      font-size: 1.4rem;
-      margin-bottom: 1.5rem;
-      font-weight: 300;
-      font-family: 'Montserrat', sans-serif;
-      letter-spacing: 1px;
-      color: var(--primary);
-      text-shadow: var(--text-shadow);
+    h2 {
+      font-family: 'Brush Script MT', cursive;
+      font-size: 30px;
+      margin-top: 0;
     }
 
-    p {
-      font-size: 1.2rem;
-      margin: 0.6rem 0;
+    .content {
+      font-size: 18px;
       line-height: 1.6;
-      text-shadow: var(--text-shadow);
     }
 
-    .divider {
-      width: 120px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-      margin: 1.5rem auto;
-      position: relative;
+    .event-time {
+      margin-top: 30px;
     }
 
-    .divider::after {
-      content: "✧";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding: 0 0.5rem;
-      color: var(--primary);
-      font-size: 1.2rem;
-      text-shadow: var(--text-shadow);
+    .event-time div {
+      margin: 5px 0;
     }
 
-    .details {
-      margin-top: 2rem;
-      font-size: 1.1rem;
-      line-height: 1.8;
-      font-family: 'Montserrat', sans-serif;
+    .confirm {
+      margin-top: 30px;
+      font-size: 16px;
     }
-
-    .details p {
-      margin: 0.8rem 0;
-    }
-
-    .highlight {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: var(--primary);
-      padding: 0.3rem 1rem;
-      display: inline-block;
-      margin: 0.4rem 0;
-      position: relative;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-    }
-
-    .highlight::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      height: 1px;
-      background: rgba(255,255,255,0.5);
-    }
-
-    a.map-link {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: bold;
-      position: relative;
-      transition: all 0.3s ease;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-    }
-
-    a.map-link:hover {
-      color: var(--accent);
-    }
-
-    a.map-link::after {
-      content: "";
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: var(--primary);
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-      transform-origin: right;
-    }
-
-    a.map-link:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-
-    .date-box {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 1rem 2rem;
-      border-radius: 8px;
-      margin: 1.5rem auto;
-      max-width: 300px;
-    }
-
-    .footer-note {
-      margin-top: 2rem;
-      font-size: 0.9rem;
-      opacity: 0.8;
-      font-style: italic;
-    }
-
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 1.5rem 0;
-    }
-
-    .countdown-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .countdown-number {
-      font-size: 2rem;
-      font-weight: bold;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 8px;
-      padding: 0.5rem 1rem;
-      min-width: 70px;
-    }
-
-    .countdown-label {
-      font-size: 0.8rem;
-      margin-top: 5px;
-      opacity: 0.8;
-    }
-
-    .rsvp-btn {
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      padding: 0.8rem 2rem;
-      border-radius: 50px;
-      font-size: 1rem;
-      cursor: pointer;
-      margin-top: 1rem;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(5px);
-    }
-
-    .rsvp-btn:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: translateY(-2px);
-    }
-
-    @keyframes fadeInUp {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    .floating {
-      animation: float 4s ease-in-out infinite;
-    }
-
-    .animate-delay-1 { animation-delay: 0.3s; }
-    .animate-delay-2 { animation-delay: 0.6s; }
-
-    @media (max-width: 600px) {
-      body {
-        background-attachment: scroll; /* Убираем фиксированное положение фона для мобильных */
-        background-size: cover; /* Сохраняем размер cover для фона */
-        background-position: center center; /* Центрируем изображение */
-      }
-    }
-    
-    @media (max-width: 400px) {
-      body {
-        background-size: 150% auto; /* Увеличиваем фон для малых экранов */
-      }
-    }
-  }
   </style>
 </head>
 <body>
-  <div class="container animate__animated animate__fadeIn">
-    <h1 class="floating">Данил & Ульяна</h1>
-    <p class="subtitle animate__animated animate__fadeIn animate-delay-1">С любовью приглашаем вас на нашу свадьбу</p>
-    <div class="date-box animate__animated animate__fadeIn animate-delay-1">
-      <p>25 июля 2025 года</p>
-      <p>г. Новосибирск</p>
-    </div>
-    <div class="countdown animate__animated animate__fadeIn animate-delay-1">
-      <div class="countdown-item">
-        <div class="countdown-number" id="days">00</div>
-        <div class="countdown-label">дней</div>
+  <div class="container">
+    <h1>Данил</h1>
+    <h2>и Ульяна</h2>
+    <div class="content">
+      <p><strong>Дорогие ...</strong></p>
+      <p>Будем рады видеть вас на нашей свадьбе</p>
+      <p><strong>25 июля 2025</strong></p>
+      <p>Ресторан «ПарадиЗ»<br>Красный проспект, 42а</p>
+
+      <div class="event-time">
+        <div>16:00 | Сбор гостей</div>
+        <div>17:00 | Праздничный банкет</div>
+        <div>23:00 | Завершение</div>
       </div>
-      <div class="countdown-item">
-        <div class="countdown-number" id="hours">00</div>
-        <div class="countdown-label">часов</div>
-      </div>
-      <div class="countdown-item">
-        <div class="countdown-number" id="minutes">00</div>
-        <div class="countdown-label">минут</div>
-      </div>
-      <div class="countdown-item">
-        <div class="countdown-number" id="seconds">00</div>
-        <div class="countdown-label">секунд</div>
+
+      <div class="confirm">
+        Просим подтвердить своё присутствие до 31.05.25
       </div>
     </div>
-    <div class="divider"></div>
-    <div class="details animate__animated animate__fadeIn animate-delay-2">
-      <p>Ресторан <a href="https://yandex.ru/maps/?text=Красный%20проспект%2042а%20Новосибирск" target="_blank" class="map-link">«Парадиз»</a></p>
-      <p>Красный проспект, 42а</p>
-      <p>Сбор гостей: <span class="highlight">16:00</span></p>
-      <p>Начало банкета: <span class="highlight">17:00</span></p>
-      <p>Окончание праздника: <span class="highlight">23:00</span></p>
-    </div>
-    <p class="footer-note animate__animated animate__fadeIn animate-delay-2">С нетерпением ждём этого прекрасного дня!</p>
   </div>
-
-<script>
-  // Обратный отсчет до даты свадьбы
-  function updateCountdown() {
-    const weddingDate = new Date('July 25, 2025 00:00:00').getTime();
-    const now = new Date().getTime();
-    const timeLeft = weddingDate - now;
-    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-    document.getElementById("days").innerText = days < 10 ? `0${days}` : days;
-    document.getElementById("hours").innerText = hours < 10 ? `0${hours}` : hours;
-    document.getElementById("minutes").innerText = minutes < 10 ? `0${minutes}` : minutes;
-    document.getElementById("seconds").innerText = seconds < 10 ? `0${seconds}` : seconds;
-  }
-
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
-</script>
 </body>
 </html>
